@@ -19,13 +19,16 @@ jobs:
           node-version: 22
 
       - name: Install Dependencies
+        working-directory: ./backend
         run: npm install
 
       - name: Start Application
+        working_directory: ./backend
         run: node src/server.js & sleep 10
 
       - name: Health Check
         run: curl --fail http://localhost:12000/health
 
       - name: Build Docker Image
+        working_directory: ./backend
         run: docker build -t my-backend .
