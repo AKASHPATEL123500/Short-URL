@@ -2,8 +2,6 @@ name: URL Shortener CI
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   build:
