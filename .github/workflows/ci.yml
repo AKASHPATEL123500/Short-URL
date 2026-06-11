@@ -8,25 +8,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Hello
-        run: echo "Workflow is working"
+      - name: Checkout Code
+        run: actions/checkout@v4
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 22
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
-      # - name: Install Dependencies
-      #   working-directory: ./backend
-      #   run: npm install
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: npm install
 
-      # - name: Start Application
-      #   working_directory: ./backend
-      #   run: node src/server.js & sleep 10
+      - name: Start Application
+        working-directory: ./backend
+        run: node src/server.js & sleep 10
 
-      # - name: Health Check
-      #   run: curl --fail http://localhost:12000/health
+      - name: Health Check
+        run: curl --fail http://localhost:12000/health
 
-      # - name: Build Docker Image
-      #   working_directory: ./backend
-      #   run: docker build -t my-backend .
+      - name: Build Docker Image
+        working-directory: ./backend
+        run: docker build -t my-backend .
