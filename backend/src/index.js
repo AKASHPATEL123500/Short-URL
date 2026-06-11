@@ -11,4 +11,12 @@ app.get("/", (req, res) => {
   );
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    success: true,
+    status: "ok",
+    statusCode: 200,
+    message: "Successfully Helth Check!",
+  });
+});
 export { app };

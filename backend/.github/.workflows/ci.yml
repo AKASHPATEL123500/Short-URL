@@ -1,0 +1,31 @@
+name: URL Shortener CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Start Application
+        run: node src/server.js & sleep 10
+
+      - name: Health Check
+        run: curl --fail http://localhost:12000/health
+
+      - name: Build Docker Image
+        run: docker build -t my-backend .
