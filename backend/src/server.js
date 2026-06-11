@@ -1,9 +1,12 @@
+import { connectDB } from "./config/db.js";
 import { app } from "./index.js";
+import dotenv from "dotenv";
 
-const port = process.env.PORT || 3000;
-const hostname = process.env.HOSTNAME || "localhost";
-const backlog = process.env.BACKLOG || 50;
+dotenv.config();
 
-app.listen(port, hostname, backlog, () => {
-  console.log(`Server is running at http://${hostname}:${port}`);
+const port = process.argv[2] || 12000;
+
+app.listen(port, () => {
+  connectDB();
+  console.log(`Server is running at http://localhost:${port}`);
 });
