@@ -14,9 +14,19 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.status(200).json({
     success: true,
-    status: "ok",
+    status: "ok ji",
     statusCode: 200,
     message: "Successfully Helth Check!",
   });
 });
+
+app.get("/check", (req, res) => {
+  res.status(200).json({
+    success: true,
+    status: "ok",
+    statusCode: 200,
+    message: "Successfully Helth Check! by Akash reddy..................",
+  });
+});
+
 export { app };
