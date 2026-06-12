@@ -41,4 +41,4 @@ jobs:
           password: ${{secrets.DOCKER_TOKEN}}
 
       - name: Push Docker Image
-        run: docker push ${{secrets.DOCKER_USERNAME}}//url-shortener-backend:latest
+        run: docker push ${{secrets.DOCKER_USERNAME}}/url-shortener-backend:latest
