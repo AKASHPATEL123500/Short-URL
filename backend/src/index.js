@@ -4,10 +4,12 @@ dotenv.config();
 
 const app = express();
 
+const SERVER_NAME = process.env.SERVER_NAME || "Unknown";
+
 app.get("/", (req, res) => {
   const running_port = req.socket.localPort;
   res.send(
-    `Hello! Yeh response Server aa raha hai jiska Port hai: ${running_port}`,
+    `Hello! Yeh response Server aa raha hai jiska Port hai: ${running_port} and Response from ${SERVER_NAME}`,
   );
 });
 
@@ -17,15 +19,6 @@ app.get("/health", (req, res) => {
     status: "ok ji",
     statusCode: 200,
     message: "Successfully Helth Check!",
-  });
-});
-
-app.get("/check", (req, res) => {
-  res.status(200).json({
-    success: true,
-    status: "ok",
-    statusCode: 200,
-    message: "Successfully Helth Check! by Akash reddy..................",
   });
 });
 

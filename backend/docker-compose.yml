@@ -1,10 +1,44 @@
 version: "3.8"
 
 services:
-  backend:
+  backend1:
     build: .
     command: npm run dev
     image: my-backend
+    environment:
+      SERVER_NAME: Backend-1
+
+    env_file:
+      - .env
+    expose:
+      - "12000"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  backend2:
+    build: .
+    command: npm run dev
+    image: my-backend
+    environment:
+      SERVER_NAME: Backend-2
+
+    env_file:
+      - .env
+    expose:
+      - "12000"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  backend3:
+    build: .
+    image: my-backend
+    environment:
+      SERVER_NAME: Backend-3
+
     env_file:
       - .env
     expose:
@@ -21,4 +55,6 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - backend
+      - backend1
+      - backend2
+      - backend3
