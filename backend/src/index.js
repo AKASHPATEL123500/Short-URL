@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   );
 });
 
+app.get("/test", (req, res) => {
+  res.send("<h1>Hello this is test route!</h1>");
+});
+
 app.get("/health", (req, res) => {
   res.status(200).json({
     success: true,

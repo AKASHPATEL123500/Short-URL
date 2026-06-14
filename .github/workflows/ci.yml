@@ -42,3 +42,8 @@ jobs:
 
       - name: Push Docker Image
         run: docker push ${{secrets.DOCKER_USERNAME}}/url-shortener-backend:latest
+
+      - name: Deploying trigger on Render
+        run: curl "$RENDER_DEPLOYE_HOOK_KEY"
+        env:
+          RENDER_DEPLOYE_HOOK_KEY: ${{secrets.RENDER_DEPLOYE_HOOK_KEY}}
